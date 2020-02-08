@@ -12,11 +12,17 @@ mongoose.connect("mongodb://localhost/week18HW", {
 });
 
 
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('./views'))
 
 const apiRoutes = require('./routes/apiRoutes');
 app.use('/api', apiRoutes);
+
+const htmlRoutes = require('./routes/clientRoutes');
+app.use('/', htmlRoutes)
 
 connection.once("open", () => {
     console.log('connected to mongoDb'.cyan); //Cyan is colors
