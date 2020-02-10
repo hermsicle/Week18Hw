@@ -6,38 +6,62 @@ header {
     height: 10vh;
     background-color: dodgerblue;
 }
-
 .container {
     display: flex;
     justify-content: stretch;
     padding: 20px;
 }
-
 .header-links {
     display: flex;
     justify-content: stretch;
     margin: 10px;
 }
-
 #home {
     margin-right: 30px;
     margin-left: 30px;
-    color: white;
+    color: whitesmoke;
+    text-decoration: none;
 }
-
+#home:hover{
+    color:greenyellow;
+}
 #saved{
     margin-right: 30px;
-    color: white;
+    color: whitesmoke;
+    text-decoration: none;
 }
-
+#saved:hover{
+    color:greenyellow;
+}
 #scrapeBtn{
     margin-right: 30px;
     padding: 5px;
     background-color: red;
     color: white;
 }
+#scrapeBtn:hover{
+    background-color: greenyellow;
+    color: black;
+}
 #clearBtn{
     padding: 5px;
     background-color: red;
+    color: white;
+}
+#clearBtn:hover{
+    background-color: greenyellow;
+    color: black;
+}
+
+main{
+    background-image: url("../assets/images/Newspaper-Background.jpg");
+    background-size: contain;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    justify-content: center;
     color: white;
 }
