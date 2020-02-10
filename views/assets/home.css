@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header {
+    height: 10vh;
+    background-color: dodgerblue;
+}
+
+.container {
+    display: flex;
+    justify-content: stretch;
+    padding: 20px;
+}
+
+.header-links {
+    display: flex;
+    justify-content: stretch;
+    margin: 10px;
+}
+
+#home {
+    margin-right: 30px;
+    margin-left: 30px;
+    color: white;
+}
+
+#saved{
+    margin-right: 30px;
+    color: white;
+}
+
+#scrapeBtn{
+    margin-right: 30px;
+    padding: 5px;
+    background-color: red;
+    color: white;
+}
+#clearBtn{
+    padding: 5px;
+    background-color: red;
+    color: white;
+}
