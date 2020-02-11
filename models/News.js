@@ -16,7 +16,6 @@ const NewsSchema = new Schema({
     comments: {
         type: [Schema.Types.String],
         default: [],
-        required: "Must pass a string value for headline"
     },
 
     url: {
