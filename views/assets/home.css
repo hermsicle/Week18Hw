@@ -70,7 +70,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh;
+    height: 100%;
     background-color: grey;
     color:white;
 }
@@ -98,4 +98,22 @@ main{
 .saved{
     text-decoration: none;
     margin-top: 10px;
+}
+
+
+.news{
+    background-color: dodgerblue;
+    margin-top: 15px;
+}
+.dbheader {
+    text-align: center;
+}
+.dbSummary{
+    text-align: center;
+}
+.dbUrl{
+    text-align: center;
+}
+.dbBtn{
+    padding: 10px;
 }

@@ -24,7 +24,6 @@ router.post("/new", (req, res) => {
         summary: req.body.summary,
         url: req.body.url
     }).then(newArticle => {
-
         res.send(newArticle);
     }).catch(err => res.send(err))
 });
@@ -64,22 +63,3 @@ router.get('/test', (req, res) => {
 
 
 module.exports = router;
-
-// newsList = [];
-// router.get("/", (req, res) => {
-//     axios.get("https://www.nytimes.com/topic/organization/the-new-york-times").then(urlResponse => {
-//         let $ = cheerio.load(urlResponse.data);
-//         let blocks = $('div.css-1l4spti');
-//         let header = $(element).find('h2').text();
-//         let summary = $(element).find('p').text();
-//         let url = $(element).find('a').attr('href');
-//         for (let i = 0; i < blocks.length; i++) {
-//             let temp = new News({
-//                 headline: header[i].children[0].data,
-//                 summary: summary[i].children[0].data,
-//                 url: url[i].children[0].data
-//             });
-//             newsList.push(temp);
-//         }
-//     })
-// })

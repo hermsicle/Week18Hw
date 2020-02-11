@@ -19,8 +19,10 @@ renderNews = () => {
             $('.news-container').prepend(
                 `
                 <div class="news">
-                <h3>${allNew.headline}</h3>
-                <p>${allNew.text}</p>
+                <h3 class="dbheader">${allNew.headline}</h3>
+                <p class="dbSummary">${allNew.summary}</p>
+                <p class="dbUrl">https://www.nytimes.com${allNew.url}</p>
+                <button class="dbBtn">Add to Saved Articles</button>
                 </div>
                 `
             )
