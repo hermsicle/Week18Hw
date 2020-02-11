@@ -5,22 +5,23 @@ const NewsSchema = new Schema({
     headline: {
         type: String,
         trim: true,
-        required: "Must pass a string value for headline"
+        required: true
     },
 
-    text: {
+    summary: {
         type: String,
-        required: "Must pass a string value for headline"
+        required: true
     },
 
     comments: {
         type: [Schema.Types.String],
         default: [],
+        required: false
     },
 
     url: {
         type: String,
-        required: "Must pass a string value for headline"
+        required: false
     }
 })
 
