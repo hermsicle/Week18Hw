@@ -1,11 +1,52 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../models');
+//const db = require('../models');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const ArticlesDb = require('../models/Articles');
 
+//Create a request to redirect to articles
+router.get('/', (req, res) => {
+    res.redirect('/articles');
+});
+
+//Create route to scrape articles:
+router.get('/scrape', (req, res) => {
+    axios.get("https://www.nytimes.com/topic/organization/the-new-york-times").then(urlResponse => {
+        let $ = cheerio.load(urlResponse.data);
+        let newCount = 0
+        let articlesArray = [];
+        $('div.css-1l4spti').each((i, element) => {
+            newCount++
+            let results = {
+                headline: "",
+                summary: "",
+                url: ""
+            };
+            results.headline = $(element).find('h2').text();
+            results.summary = $(element).find('p').text();
+            results.url = $(element).find('a').attr('href');
+            ArticlesDb.create(results).then(x => console.log(x))
+            //console.log(results);
+            articlesArray.push(results.headline, results.summary, results.url);
+            //console.log(articlesArray)
+            // ArticlesDb.create(
+            //     [{ headline: results.headline },
+            //     { summary: results.summary },
+            //     { url: results.url }]
+            // ).then(newArticles => {
+            //     res.send(newArticles)
+            // }).catch(err =>
+            //     res.send(err))
+        })
+        res.json({ browserDidntSpin: true, newCount: newCount })
+    }).catch(err => console.log(err))
+
+})
+
+//Create get request to see all scraped articles
 router.get("/all", (req, res) => {
-    db.News.find().then(allNews => {
+    ArticlesDb.find().then(allNews => {
         res.send(allNews);
     }).catch(err => {
         res.send(err)
@@ -28,38 +69,19 @@ router.post("/new", (req, res) => {
     }).catch(err => res.send(err))
 });
 
-router.patch("/update", (req, res) => {
-    db.News.findOneAndUpdate({ _id: req.body.id }, { headline: req.body.headline }).then(
-        updatedNews => {
-            res.send({ message: "success", News: updatedNews });
-        }
-    );
-});
-
 router.delete("/delete/:id", (req, res) => {
-    db.News.deleteOne({ _id: req.params.id }).then(() => {
+    ArticlesDb.deleteOne({ _id: req.params.id }).then(() => {
         res.send("success");
     });
 });
 
-
-router.get('/test', (req, res) => {
-    axios.get("https://www.nytimes.com/topic/organization/the-new-york-times").then(urlResponse => {
-        let $ = cheerio.load(urlResponse.data);
-
-        $('div.css-1l4spti').each((i, element) => {
-            let headline = $(element).find('h2').text();
-            let summary = $(element).find('p').text();
-            let url = $(element).find('a').attr('href')
-
-            db.News.create({
-                headline: headline,
-                summary: summary,
-                url: url
-            })
-        }).catch(err => console.log(err))
+router.delete("/delete", (req, res) => {
+    ArticlesDb.remove({}).then(() => {
+        res.send('success')
     })
 })
+
+
 
 
 module.exports = router;

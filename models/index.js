@@ -1,3 +1,3 @@
 module.exports = {
-    News: require('./News')
+    Articles: require('./Articles')
 }

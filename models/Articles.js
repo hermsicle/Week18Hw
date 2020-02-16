@@ -1,30 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const NewsSchema = new Schema({
+const ArticlesSchema = new Schema({
     headline: {
         type: String,
-        trim: true,
-        required: true
+        required: true,
+        unique: true
     },
-
     summary: {
         type: String,
         required: true
     },
-
     comments: {
-        type: [Schema.Types.String],
-        default: [],
-        required: false
-    },
-
-    url: {
         type: String,
         required: false
+    },
+    url: {
+        type: String,
+        required: true
     }
-})
+});
 
-const News = mongoose.model("News", NewsSchema);
+const Articles = mongoose.model("Articles", ArticlesSchema);
 
-module.exports = News;
+module.exports = Articles;

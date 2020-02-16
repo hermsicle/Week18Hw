@@ -63,7 +63,7 @@ main{
     align-items: center;
     height: 40vh;
     justify-content: center;
-    color: white;
+    color: black;
 }
 
 .main-container2{
@@ -100,10 +100,10 @@ main{
     margin-top: 10px;
 }
 
-
 .news{
     background-color: dodgerblue;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 .dbheader {
     text-align: center;
