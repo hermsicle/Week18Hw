@@ -9,15 +9,18 @@ const ArticlesSchema = new Schema({
     },
     summary: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     comments: {
         type: String,
-        required: false
+        required: false,
+        unique: true
     },
     url: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 });
 

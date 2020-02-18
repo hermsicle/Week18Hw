@@ -1,5 +1,6 @@
 $(document).ready(() => {
-    renderNews()
+    scrapeNews();
+    //renderNews()
 });
 
 //Create function to empty the Db
@@ -19,7 +20,6 @@ const renderNews = () => {
         type: "GET",
         url: "/api/all"
     }).then(allNews => {
-        //console.log(allNews);
         allNews.forEach(allNew => {
             $('.news-container').append(
                 `
@@ -37,12 +37,10 @@ const renderNews = () => {
 
 $('.scrapeBtn').on('click', (event) => {
     event.preventDefault()
-    console.log('This ')
-    scrapeNews()
-
+    renderNews();
+    $('.notice').empty();
+    $('.options').empty();
 })
-
-
 
 $('#clearBtn').on('click', () => {
     emptyNews();
@@ -54,7 +52,6 @@ function scrapeNews() {
         type: "GET",
         url: "/api/scrape"
     }).then(allNews => {
-        //console.log(allNews);
         allNews.forEach(allNew => {
             $('.news-container').prepend(
                 `
