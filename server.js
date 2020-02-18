@@ -13,6 +13,7 @@ mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true //Extracted this line from running our dev . It will say pass option {   useUnifiedTopology: true  }
 });
+mongoose.set('useCreateIndex', true);
 
 
 

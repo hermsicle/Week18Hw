@@ -6,9 +6,9 @@ const cheerio = require('cheerio');
 const ArticlesDb = require('../models/Articles');
 
 //Create a request to redirect to articles
-router.get('/', (req, res) => {
-    res.redirect('/articles');
-});
+// router.get('/', (req, res) => {
+//     res.redirect('/articles');
+// });
 
 //Create route to scrape articles:
 router.get('/scrape', (req, res) => {
@@ -76,7 +76,7 @@ router.delete("/delete/:id", (req, res) => {
 });
 
 router.delete("/delete", (req, res) => {
-    ArticlesDb.remove({}).then(() => {
+    ArticlesDb.deleteMany({}).then(() => {
         res.send('success')
     })
 })

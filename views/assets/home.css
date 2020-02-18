@@ -33,7 +33,7 @@ header {
 #saved:hover{
     color:greenyellow;
 }
-#scrapeBtn{
+.scrapeBtn{
     margin-right: 30px;
     padding: 5px;
     background-color: red;
