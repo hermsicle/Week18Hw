@@ -1,6 +1,6 @@
 $(document).ready(() => {
     scrapeNews();
-    //renderNews()
+    renderNews()
 });
 
 //Create function to empty the Db
