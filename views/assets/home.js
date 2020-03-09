@@ -1,6 +1,5 @@
 $(document).ready(() => {
     scrapeNews();
-    renderNews()
 });
 
 //Create function to empty the Db
@@ -47,7 +46,7 @@ $('#clearBtn').on('click', () => {
 })
 
 function scrapeNews() {
-    console.log("WERE IN THE FUNCTION")
+    console.log("WERE IN THE FUNCTION now")
     $.ajax({
         type: "GET",
         url: "/api/scrape"
