@@ -4,8 +4,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const ArticlesDb = require('../models/Articles');
 
-
-
 //Create route to scrape articles:
 router.get('/scrape', (req, res) => {
     axios.get("https://www.nytimes.com/topic/organization/the-new-york-times").then(urlResponse => {
@@ -43,13 +41,13 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/find/:id", (req, res) => {
-    db.News.find({ _id: req.params.id }).then(foundNews => {
+    Articlesdb.News.find({ _id: req.params.id }).then(foundNews => {
         res.send(foundNews);
     });
 });
 
 router.post("/new", (req, res) => {
-    db.News.create({
+    ArticlesDb.News.create({
         headline: req.body.headline,
         summary: req.body.summary,
         url: req.body.url

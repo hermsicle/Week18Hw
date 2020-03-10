@@ -1,17 +1,13 @@
 $(document).ready(() => {
-
+    scrapeNews();
 });
 
-//Create function to empty the Db
-emptyNews = () => {
-    $.ajax({
-        type: "DELETE",
-        url: "/api/delete"
-    }).then(emptyNews => {
-        console.log('news is empty')
-        $('.news-container').empty();
-    })
-}
+$(document).on('click', '.dbBtn', function () {
+    const id = $(this).attr("data-id");
+    console.log(id);
+    window.location.href = `/saved?id=${id}`
+
+})
 
 //Create function to render News
 const renderNews = () => {
@@ -55,5 +51,13 @@ function scrapeNews() {
     })
 }
 
-
-
+//Create function to empty the Db
+emptyNews = () => {
+    $.ajax({
+        type: "DELETE",
+        url: "/api/delete"
+    }).then(emptyNews => {
+        console.log('news is empty')
+        $('.news-container').empty();
+    })
+}
