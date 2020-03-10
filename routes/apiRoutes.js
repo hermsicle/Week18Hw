@@ -43,7 +43,9 @@ router.get("/all", (req, res) => {
 router.get("/find/:id", (req, res) => {
     Articlesdb.News.find({ _id: req.params.id }).then(foundNews => {
         res.send(foundNews);
-    });
+    }).catch(err => {
+        res.send(err)
+    })
 });
 
 router.post("/new", (req, res) => {
@@ -59,7 +61,7 @@ router.post("/new", (req, res) => {
 router.delete("/delete/:id", (req, res) => {
     ArticlesDb.deleteOne({ _id: req.params.id }).then(() => {
         res.send("success");
-    });
+    }).catch(err => { console.log(err) })
 });
 
 router.delete("/delete", (req, res) => {
