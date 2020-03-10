@@ -5,22 +5,20 @@ const ArticlesSchema = new Schema({
     headline: {
         type: String,
         required: true,
-        //unique: true,
+        unique: !true,
     },
     summary: {
         type: String,
         required: true,
-        //unique: true,
+        unique: !true,
     },
     comments: {
         type: String,
-        required: false,
-        //unique: true,
     },
     url: {
         type: String,
         required: true,
-        //unique: true,
+        unique: !true,
     }
 });
 

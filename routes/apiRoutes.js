@@ -12,7 +12,7 @@ router.get('/scrape', (req, res) => {
         let $ = cheerio.load(urlResponse.data);
         let newCount = 0
         let articlesArray = [];
-        $('div.css-1l4spti').each((i, element) => {
+        $('li.css-ye6x8s').each((i, element) => {
             newCount++
             let results = {
                 headline: "",
@@ -23,10 +23,14 @@ router.get('/scrape', (req, res) => {
             results.summary = $(element).find('p').text();
             results.url = $(element).find('a').attr('href');
             ArticlesDb.create(results).then(x => console.log(x))
+                .catch(err => { console.log(err) })
             articlesArray.push(results.headline, results.summary, results.url);
-        })
+        });
+        console.log(articlesArray)
         res.json({ browserDidntSpin: true, newCount: newCount })
+        //res.redirect("/new")
     }).catch(err => console.log(err))
+
 })
 
 //Create get request to see all scraped articles
