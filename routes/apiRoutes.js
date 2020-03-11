@@ -50,9 +50,9 @@ router.get("/find/:id", (req, res) => {
 
 router.post("/new", (req, res) => {
     ArticlesDb.News.create({
-        headline: req.body.headline,
-        summary: req.body.summary,
-        url: req.body.url
+        // headline: req.body.headline,
+        // summary: req.body.summary,
+        // url: req.body.url
     }).then(newArticle => {
         res.send(newArticle);
     }).catch(err => res.send(err))
