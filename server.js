@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connection = mongoose.connection;
 const logger = require('morgan');
 const colors = require('colors');
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const MONGODB_URI =
     process.env.MONGODB_URI || "mongodb://localhost/week18HWv2";
 
@@ -13,7 +13,6 @@ mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true //Extracted this line from running our dev . It will say pass option {   useUnifiedTopology: true  }
 });
 mongoose.set('useCreateIndex', true);
-
 
 
 app.use(logger('dev'));
