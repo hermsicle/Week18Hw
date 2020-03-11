@@ -45,8 +45,8 @@ function scrapeNews() {
     $.ajax({
         type: "GET",
         url: "/api/scrape"
-    }).then(scrapedData => {
-        console.log(scrapedData)
+    }).then(() => {
+        renderNews();
     })
 }
 
