@@ -65,3 +65,9 @@ main{
     justify-content: center;
     color: white;
 }
+.savedArticles{
+    display: flex;
+    background-color: dodgerblue;
+    border: 1px solid black;
+    height: 100vh;
+}

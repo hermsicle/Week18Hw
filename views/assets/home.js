@@ -6,6 +6,7 @@ $(document).on('click', '.dbBtn', function () {
     const id = $(this).attr("data-id");
     console.log(id);
     window.location.href = `/saved?id=${id}`
+
 })
 
 //Create function to render News
@@ -46,7 +47,6 @@ function scrapeNews() {
         type: "GET",
         url: "/api/scrape"
     }).then(() => {
-
         console.log('news have been scraped')
     })
 }
