@@ -12,14 +12,15 @@ const ArticlesSchema = new Schema({
         required: true,
         unique: !true,
     },
-    comments: {
-        type: String,
-    },
     url: {
         type: String,
         required: true,
         unique: !true,
-    }
+    },
+    comment: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comments'
+    }]
 });
 
 const Articles = mongoose.model("Articles", ArticlesSchema);

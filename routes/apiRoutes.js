@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
 const ArticlesDb = require('../models/Articles');
+const db = require('../models')
 
 //Create route to scrape articles:
 router.get('/scrape', (req, res) => {
@@ -24,11 +25,10 @@ router.get('/scrape', (req, res) => {
                 .catch(err => { console.log(err) })
             articlesArray.push(results.headline, results.summary, results.url);
         });
-        console.log(articlesArray)
+        //console.log(articlesArray)
         res.json({ browserDidntSpin: true, newCount: newCount })
         //res.redirect("/new")
     }).catch(err => console.log(err))
-
 })
 
 //Create get request to see all scraped articles
@@ -41,18 +41,29 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/find/:id", (req, res) => {
-    Articlesdb.News.find({ _id: req.params.id }).then(foundNews => {
-        res.send(foundNews);
-    }).catch(err => {
-        res.send(err)
-    })
-});
+    ArticlesDb.findOne({
+        _id: req.params.id
+    }).then(searchedArticle => {
+        res.send(searchedArticle)
+    }).catch(
+        err => res.send(err)
+    )
+})
+
+router.get("/article/:id", (req, res) => {
+    ArticlesDb.findOne({ _id: req.params.id })
+        .populate('Comments').exec((err, Comments) => {
+            console.log("Populated Articles " + Comments)
+        }).catch(err => {
+            res.send(err)
+        })
+})
 
 router.post("/new", (req, res) => {
-    ArticlesDb.News.create({
-        // headline: req.body.headline,
-        // summary: req.body.summary,
-        // url: req.body.url
+    ArticlesDb.create({
+        headline: req.query.headline,
+        summary: req.query.summary,
+        url: req.query.url
     }).then(newArticle => {
         res.send(newArticle);
     }).catch(err => res.send(err))

@@ -46,7 +46,8 @@ function scrapeNews() {
         type: "GET",
         url: "/api/scrape"
     }).then(() => {
-        renderNews();
+
+        console.log('news have been scraped')
     })
 }
 
