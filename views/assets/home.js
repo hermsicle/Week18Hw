@@ -32,7 +32,7 @@ const renderNews = () => {
 
 $('.scrapeBtn').on('click', (event) => {
     event.preventDefault()
-    scrapeNews();
+    //scrapeNews();
     renderNews();
     $('.notice').empty();
     $('.options').empty();
