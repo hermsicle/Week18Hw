@@ -40,6 +40,7 @@ $('.scrapeBtn').on('click', (event) => {
 
 $('#clearBtn').on('click', () => {
     emptyNews();
+    scrapeNews();
 })
 
 function scrapeNews() {
