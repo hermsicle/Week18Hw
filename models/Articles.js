@@ -18,12 +18,10 @@ const ArticlesSchema = new Schema({
         unique: !true,
     },
     comment: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comments'
+        type: String
     }],
     saved: {
-        type: Boolean,
-        default: false
+        type: Boolean
     }
 });
 

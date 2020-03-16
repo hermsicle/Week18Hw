@@ -61,31 +61,11 @@ router.get("/find/:id", (req, res) => {
     )
 })
 
-router.get("/article/:id", (req, res) => {
-    ArticlesDb.findOne({ _id: req.params.id })
-        .populate('Comments').exec((err, Comments) => {
-            console.log("Populated Articles " + Comments)
-        }).catch(err => {
-            res.send(err)
-        })
-})
-
-router.post("/new", (req, res) => {
-    ArticlesDb.create({
-        headline: req.query.headline,
-        summary: req.query.summary,
-        url: req.query.url
-    }).then(newArticle => {
-        res.send(newArticle);
-    }).catch(err => res.send(err))
-});
-
 router.delete("/delete/:id", (req, res) => {
     ArticlesDb.deleteOne({ _id: req.params.id }).then(() => {
         res.send("successly deleted article");
     }).catch(err => { console.log(err) })
 });
-
 router.delete("/delete", (req, res) => {
     ArticlesDb.deleteMany({}).then(() => {
         res.send('success')
@@ -97,5 +77,14 @@ router.patch("/saved/:id", (req, res) => {
         res.json(okpack)
     })
 })
+router.patch("/comments/:id", (req, res) => {
+    console.log(req.body);
+    ArticlesDb.updateOne({ _id: req.params.id }, req.body).then((package) => {
+        res.json(package)
+    }
+    )
+})
+
+
 
 module.exports = router;

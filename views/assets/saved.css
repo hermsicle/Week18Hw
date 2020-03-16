@@ -65,17 +65,17 @@ main{
     justify-content: center;
     color: white;
 }
+
 .savedArticles{
     display: flex;
     background-color: dodgerblue;
-    border: 1px solid black;
     height: 100vh;
 }
 
 .news{
     display: flex;
     margin-bottom: 15px;
-    border: 1px solid black;
+    border: 1px dotted black;
     height: 150px;
     flex-direction: column;
     margin-left: 15px;
@@ -87,4 +87,24 @@ main{
     display:flex;
     width: 80vw;
     height: 25px;
+}
+.commentBtn{
+    background-color:yellowgreen;
+    display:flex;
+    width: 100px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.deleteBtn{
+    background-color:yellowgreen;
+    display:flex;
+    width: 100px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.commentSection{
+    margin: 10px;
+    color: white;
 }

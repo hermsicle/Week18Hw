@@ -37,14 +37,12 @@ const renderNews = () => {
 $('.scrapeBtn').on('click', () => {
     //event.preventDefault()
     scrapeNews();
-    renderNews();
-    // $('.notice').empty();
-    // $('.options').empty();
+    window.location.reload(true)
 })
 
 $('#clearBtn').on('click', () => {
     emptyNews();
-    renderNews();
+    window.location.reload(true)
 })
 
 function scrapeNews() {
