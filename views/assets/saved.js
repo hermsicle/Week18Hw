@@ -52,3 +52,18 @@ $(document).on('click', '.commentBtn', function () {
     }).then(res => console.log(res))
     window.location.reload(true)
 })
+
+$('#clearBtn').on('click', () => {
+    emptyNews();
+    window.location.reload(true)
+})
+
+emptyNews = () => {
+    $.ajax({
+        type: "DELETE",
+        url: "/api/delete"
+    }).then(emptyNews => {
+        console.log('news is empty')
+        $('.news-container').empty();
+    })
+}
