@@ -1,12 +1,15 @@
 $(document).ready(() => {
-    scrapeNews();
+    renderNews();
 });
 
 $(document).on('click', '.dbBtn', function () {
     const id = $(this).attr("data-id");
     console.log(id);
-    window.location.href = `/saved?id=${id}`
-
+    $.ajax({
+        type: 'PATCH',
+        url: `/api/saved/${id}`,
+        data: { saved: true },
+    }).then(res => console.log(res))
 })
 
 //Create function to render News
@@ -33,7 +36,7 @@ const renderNews = () => {
 $('.scrapeBtn').on('click', (event) => {
     event.preventDefault()
     //scrapeNews();
-    renderNews();
+    scrapeNews();
     $('.notice').empty();
     $('.options').empty();
 })

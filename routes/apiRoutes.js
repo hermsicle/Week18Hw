@@ -39,11 +39,22 @@ router.get("/all", (req, res) => {
         res.send(err)
     })
 });
+//Create get request to see all scraped articles
+router.get("/saved", (req, res) => {
+    ArticlesDb.find({ saved: true }).then(allNews => {
+        res.send(allNews);
+    }).catch(err => {
+        res.send(err)
+    })
+});
+
+//get /saved ALL SAVED 
 
 router.get("/find/:id", (req, res) => {
     ArticlesDb.findOne({
         _id: req.params.id
     }).then(searchedArticle => {
+        //console.log(searchedArticle)
         res.send(searchedArticle)
     }).catch(
         err => res.send(err)
@@ -80,6 +91,11 @@ router.delete("/delete", (req, res) => {
         res.send('success')
     })
 })
-
+router.patch("/saved/:id", (req, res) => {
+    console.log(req.body)
+    ArticlesDb.updateOne({ _id: req.params.id }, req.body).then((okpack) => {
+        res.json(okpack)
+    })
+})
 
 module.exports = router;

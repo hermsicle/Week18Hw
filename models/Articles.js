@@ -20,7 +20,11 @@ const ArticlesSchema = new Schema({
     comment: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comments'
-    }]
+    }],
+    saved: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const Articles = mongoose.model("Articles", ArticlesSchema);
