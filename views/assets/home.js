@@ -2,6 +2,7 @@ $(document).ready(() => {
     renderNews();
 });
 
+
 $(document).on('click', '.dbBtn', function () {
     const id = $(this).attr("data-id");
     console.log(id);
@@ -33,17 +34,17 @@ const renderNews = () => {
     })
 }
 
-$('.scrapeBtn').on('click', (event) => {
-    event.preventDefault()
-    //scrapeNews();
+$('.scrapeBtn').on('click', () => {
+    //event.preventDefault()
     scrapeNews();
-    $('.notice').empty();
-    $('.options').empty();
+    renderNews();
+    // $('.notice').empty();
+    // $('.options').empty();
 })
 
 $('#clearBtn').on('click', () => {
     emptyNews();
-    scrapeNews();
+    renderNews();
 })
 
 function scrapeNews() {

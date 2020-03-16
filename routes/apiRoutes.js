@@ -82,7 +82,7 @@ router.post("/new", (req, res) => {
 
 router.delete("/delete/:id", (req, res) => {
     ArticlesDb.deleteOne({ _id: req.params.id }).then(() => {
-        res.send("success");
+        res.send("successly deleted article");
     }).catch(err => { console.log(err) })
 });
 

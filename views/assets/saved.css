@@ -71,3 +71,20 @@ main{
     border: 1px solid black;
     height: 100vh;
 }
+
+.news{
+    display: flex;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    height: 150px;
+    flex-direction: column;
+    margin-left: 15px;
+}
+.dbheader{
+    font-size: 16px;
+}
+.commentBox{
+    display:flex;
+    width: 80vw;
+    height: 25px;
+}
